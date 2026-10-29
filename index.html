@@ -1472,6 +1472,66 @@ dialog.case::backdrop{background:rgba(8,8,9,.7)}
 .card-title{text-wrap:balance}
 .rail-foot{flex-wrap:wrap}
 .rail-foot a.resume{color:var(--text-dim)}
+
+/* ---------- Life in looks lately (deck gallery) ---------- */
+.lk-mod{padding:12px}.lk-mod .chev{font-family:var(--mono);font-size:14px}
+.lk-mod .peek-t b .lk-new{display:inline-block;width:auto;font-size:10px;font-weight:600;color:#0E0E0F;margin-left:6px;padding:1px 5px;border-radius:4px;background:var(--accent);color:#0E0E0F;font:600 10px/1.4 var(--mono);vertical-align:2px}
+#lk{position:fixed;inset:0;z-index:10002;background:#0E0E0F;color:var(--text);font-family:var(--sans);overflow:hidden;visibility:hidden;clip-path:circle(0 at var(--ox,50%) var(--oy,50%));transition:clip-path .7s cubic-bezier(.7,0,.2,1),visibility 0s .7s}
+#lk.open{visibility:visible;clip-path:circle(150% at var(--ox) var(--oy));transition:clip-path .7s cubic-bezier(.7,0,.2,1)}
+#lk .lk-bar{position:absolute;top:0;left:0;right:0;z-index:4;display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:14px 16px;background:linear-gradient(#0E0E0F 55%,transparent)}
+#lk .lk-bar h2{margin:0 auto 0 0;font:600 18px/1.2 var(--sans)}#lk .lk-bar h2 small{display:block;font:11px var(--mono);color:var(--text-dim);letter-spacing:.06em;text-transform:uppercase}
+#lk .lk-seg{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--bg-1)}
+#lk .lk-seg button{border:0;background:none;color:var(--text-dim);font:12px var(--mono);padding:6px 12px;border-radius:999px;cursor:pointer}
+#lk .lk-seg button[aria-pressed=true]{background:var(--text);color:#0E0E0F}
+#lk .lk-x{border:1px solid var(--line);background:var(--bg-1);color:var(--text);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;line-height:1}
+#lk .lk-view{position:absolute;inset:0;perspective:1600px;perspective-origin:50% 45%;touch-action:none;background:radial-gradient(ellipse at 50% 110%,rgba(123,75,216,.35),transparent 60%);transition:background .1s}
+#lk .lk-view.beat{background:radial-gradient(ellipse at 50% 110%,rgba(123,75,216,.55),transparent 65%)}
+#lk .lk-view::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(#0E0E0F,transparent 18%,transparent 82%,#0E0E0F),linear-gradient(90deg,#0E0E0F,transparent 10%,transparent 90%,#0E0E0F)}
+#lk .lk-rig{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .5s ease-out}
+#lk .lk-stage{--w:min(980px,86vw);position:absolute;left:50%;top:50%;width:var(--w);height:220vh;margin-left:calc(var(--w)/-2);margin-top:-110vh;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;transform-style:preserve-3d;transition:transform 1s cubic-bezier(.65,0,.2,1)}
+#lk .lk-col{display:flex;flex-direction:column;align-self:start;gap:18px;will-change:transform;transform-style:preserve-3d}
+#lk .lk-t{flex:none;position:relative;padding:0;border:0;border-radius:18px;overflow:hidden;cursor:pointer;background:#1E1E21 center/cover no-repeat;box-shadow:0 30px 50px -24px rgba(0,0,0,.85),inset 0 0 0 1px rgba(255,255,255,.06);transition:transform .45s cubic-bezier(.2,.8,.2,1),filter .35s,opacity .35s}
+#lk .lk-view.beat .lk-t{filter:brightness(1.12)}
+#lk .lk-t:hover{transform:translateZ(60px) scale(1.03)}
+#lk .lk-t:focus-visible{outline:2px solid var(--accent-hi);outline-offset:3px}
+#lk .lk-t.off{filter:grayscale(1) brightness(.35);opacity:.2;pointer-events:none}
+#lk .lk-t.pop{animation:lk-pop .9s cubic-bezier(.2,.9,.2,1) forwards;z-index:5}
+#lk .lk-t.done{opacity:.3}
+@keyframes lk-pop{30%{transform:translateZ(260px) scale(1.2);filter:brightness(1.5)}100%{transform:none;opacity:.3}}
+#lk .lk-hit{position:absolute;left:0;right:0;top:calc(50% + 16vh);height:14px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;transform:translateZ(2px);pointer-events:none}
+#lk .lk-hit i{position:relative;border-radius:999px;background:rgba(159,196,201,.35);box-shadow:0 0 18px 2px rgba(159,196,201,.45);transition:background .1s,box-shadow .1s}
+#lk .lk-view.beat .lk-hit i{background:rgba(180,140,255,.6);box-shadow:0 0 30px 6px rgba(180,140,255,.6)}
+#lk .lk-hit i.flash{background:#fff;box-shadow:0 0 40px 10px rgba(180,140,255,.9)}
+#lk .lk-hit i.flash::after{content:"";position:absolute;left:50%;top:50%;width:100%;aspect-ratio:1;border:2px solid #fff;border-radius:50%;transform:translate(-50%,-50%) scale(.2);animation:lk-ring .5s ease-out forwards}
+@keyframes lk-ring{to{transform:translate(-50%,-50%) scale(1.3);opacity:0}}
+#lk .lk-hud{position:absolute;inset:0;z-index:3;pointer-events:none}
+#lk .lk-score,#lk .lk-combo{position:absolute;top:96px;font:11px var(--mono);color:var(--text-dim);letter-spacing:.08em;text-transform:uppercase}
+#lk .lk-score{left:16px}#lk .lk-combo{right:16px;text-align:right}
+#lk .lk-score b{display:block;font:600 28px var(--sans);color:var(--text);letter-spacing:0}
+#lk .lk-combo b{display:block;font:700 40px/1 var(--sans);color:var(--accent-hi)}
+#lk .lk-judge{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);font:800 clamp(34px,7vw,72px)/1 var(--sans);letter-spacing:-.02em;opacity:0;text-shadow:0 0 30px currentColor;white-space:nowrap}
+#lk .lk-judge.on{animation:lk-judge .7s cubic-bezier(.2,.9,.2,1)}
+@keyframes lk-judge{0%{opacity:0;transform:translate(-50%,-30%) scale(.6)}25%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}100%{opacity:0;transform:translate(-50%,-70%)}}
+#lk .lk-keys{position:absolute;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;align-items:center;gap:8px;pointer-events:auto;white-space:nowrap;font:11px var(--mono);color:var(--text-dim)}
+#lk kbd{font:12px var(--mono);border:1px solid var(--line);background:var(--bg-1);color:var(--text-dim);padding:4px 9px;border-radius:6px}
+#lk .lk-beat{font:12px var(--mono);border:1px solid var(--accent);background:rgba(14,14,15,.6);color:var(--accent-hi);padding:7px 14px;border-radius:999px;cursor:pointer}
+#lk .lk-beat[aria-pressed=true]{background:var(--accent);color:#0E0E0F}
+#lk .lk-lb{position:absolute;inset:0;z-index:6;display:grid;place-items:center;padding:24px;background:rgba(8,8,9,.88);opacity:0;pointer-events:none;transition:opacity .25s}
+#lk .lk-lb.on{opacity:1;pointer-events:auto}
+#lk .lk-lb figure{margin:0;text-align:center}
+#lk .lk-lb img{display:block;max-width:min(520px,86vw);max-height:68vh;border-radius:16px;transform:scale(.94);transition:transform .3s}
+#lk .lk-lb.on img{transform:none}
+#lk .lk-lb .lk-j{display:block;min-height:1px;margin-bottom:10px;font:800 22px var(--sans)}
+#lk .lk-lb figcaption{margin-top:12px;font:14px var(--sans)}#lk .lk-lb figcaption em{display:block;font:11px var(--mono);font-style:normal;color:var(--accent-hi);text-transform:uppercase;letter-spacing:.06em}
+@media (hover:none){#lk .lk-k{display:none}}
+@media (max-width:640px){
+  #lk .lk-bar h2{flex-basis:calc(100% - 48px)}#lk .lk-bar .lk-seg{order:3}
+  #lk .lk-score,#lk .lk-combo{top:auto;bottom:calc(max(18px,env(safe-area-inset-bottom)) + 52px)}
+  #lk .lk-stage{--w:94vw;gap:12px}#lk .lk-col{gap:12px}#lk .lk-hit{gap:12px;top:calc(50% + 10vh)}
+  #lk .lk-t{border-radius:12px}
+}
+@media (prefers-reduced-motion:reduce){#lk,#lk.open{transition:none}}
+@media (min-width:1200px){.lk-mod .peek-strip{width:64px;height:64px}}
 </style>
 
 <a class="skip" href="#p-work">Skip to work</a>
@@ -1520,6 +1580,9 @@ dialog.case::backdrop{background:rgba(8,8,9,.7)}
           <p class="learn-l"><span class="mono">Unlocked</span> <b id="learn-tools"></b></p>
           <p class="learn-l"><span class="mono">+ Skills</span> <span id="learn-skills"></span></p>
         </div>
+      </section>
+      <section class="module lk-mod" aria-label="Life in looks lately">
+        <button class="acc-toggle peek" id="lk-open" aria-haspopup="dialog" aria-controls="lk"><span class="peek-strip" id="lk-peek" aria-hidden="true"></span><span class="peek-t"><b>Life in looks lately<span class="lk-new">NEW</span></b><span>Imagination + exploration, in pictures.</span></span><span class="chev" aria-hidden="true">↗</span></button>
       </section>
     </div>
 
@@ -4586,6 +4649,117 @@ const pv=document.getElementById("priv");document.getElementById("priv-btn")?.ad
   f.addEventListener("submit", e => { e.preventDefault(); const v = k => f[k].value.trim(); const date = v("dt") ? new Date(v("dt") + "T00:00").toLocaleDateString(undefined, {weekday:"short", month:"short", day:"numeric", year:"numeric"}) : "";
     const body = `Hi Yesha,\n\nI'd love to see you at ${v("ev")}${date ? " on " + date : ""}${v("wh") ? " (" + v("wh") + ")" : ""}.\n\n${v("nt") ? v("nt") + "\n\n" : ""}Hope you can make it!\n${v("nm")}`;
     location.href = "mailto:niranjan.yesha@gmail.com?subject=" + encodeURIComponent("Event invite: " + v("ev")) + "&body=" + encodeURIComponent(body); d.close(); f.reset(); });
+})();
+
+/* ---------- Life in looks lately: deck gallery + rhythm game ---------- */
+(() => {
+const LOOKS = [{"src": "looks/01.webp", "c": "Exploration", "t": "Cat café, in black and white", "ar": 1.333}, {"src": "looks/02.webp", "c": "Imagination", "t": "Rainbows and cats", "ar": 0.753}, {"src": "looks/03.webp", "c": "Exploration", "t": "Roses along the block", "ar": 0.75}, {"src": "looks/04.webp", "c": "Imagination", "t": "Book tunnel, sketched", "ar": 0.754}, {"src": "looks/05.webp", "c": "Exploration", "t": "Dusk, on the walk home", "ar": 0.75}, {"src": "looks/06.webp", "c": "Imagination", "t": "Self, illustrated", "ar": 1.0}, {"src": "looks/07.webp", "c": "Exploration", "t": "Sea arch, afternoon", "ar": 0.75}, {"src": "looks/08.webp", "c": "Imagination", "t": "Light on the wall", "ar": 0.55}, {"src": "looks/09.webp", "c": "Exploration", "t": "Bookstore wandering", "ar": 0.75}, {"src": "looks/10.webp", "c": "Imagination", "t": "Reading: The Art of Pacing", "ar": 0.75}, {"src": "looks/11.webp", "c": "Exploration", "t": "In the room, listening", "ar": 0.75}, {"src": "looks/12.webp", "c": "Exploration", "t": "Marina at last light", "ar": 1.342}];
+const btn = document.getElementById("lk-open"); if (!btn) return;
+const q = (s, r = document) => r.querySelector(s), qa = (s, r = document) => [...r.querySelectorAll(s)];
+const calm = () => document.documentElement.classList.contains("q-motion") || matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+/* sidebar peek: cycles the first few photos */
+const pk = q("#lk-peek");
+pk.innerHTML = LOOKS.slice(0, 5).map(l => `<img src="${l.src}" alt="" loading="lazy">`).join("");
+const pim = [...pk.children]; let pi = 0; pim[0].classList.add("on");
+setInterval(() => { if (calm()) return; pim[pi].classList.remove("on"); pi = (pi + 1) % pim.length; pim[pi].classList.add("on"); }, 2200);
+
+/* overlay */
+const ov = document.createElement("div");
+ov.id = "lk"; ov.setAttribute("role", "dialog"); ov.setAttribute("aria-modal", "true"); ov.setAttribute("aria-label", "Life in looks lately"); ov.hidden = true;
+const tile = (l, i) => `<button class="lk-t" data-i="${i}" data-c="${l.c}" style="aspect-ratio:${l.ar};background-image:url(${l.src})" aria-label="${l.c}: ${l.t}"></button>`;
+const sets = [0, 1, 2, 3].map(c => LOOKS.map((l, i) => [l, i]).filter(([, i]) => i % 4 === c || i % 4 === (c + 2) % 4).map(([l, i]) => tile(l, i)).join(""));
+const lanes = sets.map(() => `<div class="lk-col"></div>`).join("");
+ov.innerHTML = `
+  <div class="lk-bar"><h2><small>Life in looks · lately</small>Imagination + Exploration</h2>
+    <div class="lk-seg" role="group" aria-label="Filter"><button aria-pressed="true" data-f="all">All</button><button aria-pressed="false" data-f="Imagination">Imagination</button><button aria-pressed="false" data-f="Exploration">Exploration</button></div>
+    <button class="lk-x" aria-label="Close">×</button></div>
+  <div class="lk-view"><div class="lk-rig"><div class="lk-stage">${lanes}<div class="lk-hit"><i></i><i></i><i></i><i></i></div></div></div>
+    <div class="lk-hud"><div class="lk-score">Score<b>0</b></div><div class="lk-combo">Combo<b>0</b></div><div class="lk-judge" aria-live="polite"></div>
+      <div class="lk-keys"><span class="lk-k"><kbd>D</kbd> <kbd>F</kbd> <kbd>J</kbd> <kbd>K</kbd></span><span class="lk-k">or click a tile on the line</span><button class="lk-beat" aria-pressed="false">♪ Beat</button></div></div></div>
+  <div class="lk-lb" aria-live="polite"><figure><b class="lk-j"></b><img alt=""><figcaption></figcaption></figure></div>`;
+document.body.appendChild(ov);
+
+const view = q(".lk-view", ov), rig = q(".lk-rig", ov), st = q(".lk-stage", ov), cols = qa(".lk-col", ov), pads = qa(".lk-hit i", ov), lb = q(".lk-lb", ov);
+const cam = () => innerWidth < 640 ? "rotateX(46deg) rotateZ(-10deg) scale(.95)" : innerWidth < 1100 ? "rotateX(52deg) rotateZ(-20deg)" : "rotateX(56deg) rotateZ(-30deg) scale(1.05)";
+let open = false, loaded = false, raf = 0, timer = 0, half = [], off = [-120, -360, -40, -260], sp = 0, bend = 0, score = 0, combo = 0, ac = null, beatOn = false, bt = 0, lbT = 0, last = null;
+
+let filt = "all";
+/* fill each lane with enough copies of its photos to always cover the deck, then loop by one copy's height */
+const measure = () => { const SH = st.offsetHeight; half = cols.map((c, i) => { c.innerHTML = sets[i]; const g = parseFloat(getComputedStyle(c).rowGap || 0) || 0, h1 = c.scrollHeight + g; c.innerHTML = sets[i].repeat(Math.ceil(SH / h1) + 2); return h1; }); applyFilter(); };
+const applyFilter = () => qa(".lk-t", ov).forEach(t => t.classList.toggle("off", filt !== "all" && t.dataset.c !== filt));
+function drift() {
+  sp *= .93; bend += (Math.max(-8, Math.min(8, sp * 1.4)) - bend) * .12;
+  cols.forEach((c, i) => { off[i] += ((calm() ? 0 : 1.7) + sp); const H = half[i] || 1; off[i] = ((off[i] % H) - H) % H; c.style.transform = `translateY(${off[i]}px) skewY(${bend}deg)`; });
+  raf = requestAnimationFrame(drift);
+}
+function beat() { if (calm()) return; view.classList.add("beat"); setTimeout(() => view.classList.remove("beat"), 110); if (beatOn && ac) { if (bt % 2 === 0) kick(); hat(); } bt++; }
+
+function show(e) {
+  last = document.activeElement;
+  const r = btn.getBoundingClientRect(); ov.style.setProperty("--ox", r.left + 40 + "px"); ov.style.setProperty("--oy", r.top + r.height / 2 + "px");
+  st.style.transform = cam(); ov.hidden = false; void ov.offsetWidth; ov.classList.add("open"); open = true;
+  document.documentElement.style.overflow = "hidden";
+  requestAnimationFrame(() => { measure(); cancelAnimationFrame(raf); drift(); });
+  clearInterval(timer); timer = setInterval(beat, 254);
+  q(".lk-x", ov).focus({ preventScroll: true });
+}
+function hide() {
+  open = false; ov.classList.remove("open"); lb.classList.remove("on"); cancelAnimationFrame(raf); clearInterval(timer);
+  document.documentElement.style.overflow = ""; setTimeout(() => { if (!open) ov.hidden = true; }, 700);
+  if (last) last.focus({ preventScroll: true });
+}
+btn.addEventListener("click", show);
+q(".lk-x", ov).addEventListener("click", hide);
+addEventListener("resize", () => { if (open) { st.style.transform = cam(); measure(); } });
+
+/* filters */
+q(".lk-seg", ov).addEventListener("click", e => { const f = e.target.dataset.f; if (!f) return; qa("button", e.currentTarget).forEach(b => b.setAttribute("aria-pressed", b === e.target)); filt = f; applyFilter(); });
+
+/* scroll / swipe speed + cursor lean */
+view.addEventListener("wheel", e => { e.preventDefault(); sp += e.deltaY * .035; }, { passive: false });
+let ty = null, tmoved = 0;
+view.addEventListener("touchstart", e => { ty = e.touches[0].clientY; tmoved = 0; }, { passive: true });
+view.addEventListener("touchmove", e => { const d = ty - e.touches[0].clientY; tmoved += Math.abs(d); sp += d * .15; ty = e.touches[0].clientY; }, { passive: true });
+view.addEventListener("pointermove", e => { if (e.pointerType !== "mouse" || calm()) return; const mx = e.clientX / innerWidth - .5, my = e.clientY / innerHeight - .5; rig.style.transform = `rotateY(${mx * 10}deg) rotateX(${-my * 7}deg)`; });
+view.addEventListener("pointerleave", () => rig.style.transform = "");
+
+/* game */
+const J = [[45, "PERFECT", "#B4D3D6", 300], [95, "GREAT", "#B38CFF", 200], [170, "GOOD", "#F4C95D", 100], [1e9, "MISS", "#FF5E5B", 0]];
+function hit(t) {
+  const lane = cols.indexOf(t.parentElement), pr = pads[lane].getBoundingClientRect(), tr = t.getBoundingClientRect();
+  const d = Math.abs((tr.top + tr.bottom) / 2 - (pr.top + pr.bottom) / 2) - tr.height * .25, j = J.find(j => d < j[0]);
+  combo = j[3] ? combo + 1 : 0; score += Math.round(j[3] * (1 + combo * .1));
+  q(".lk-score b", ov).textContent = score; q(".lk-combo b", ov).textContent = combo;
+  const jd = q(".lk-judge", ov); jd.textContent = j[1] + (combo > 2 ? ` ×${combo}` : ""); jd.style.color = j[2]; jd.classList.remove("on"); void jd.offsetWidth; jd.classList.add("on");
+  const p = pads[lane]; p.classList.remove("flash"); void p.offsetWidth; p.classList.add("flash"); setTimeout(() => p.classList.remove("flash"), 500);
+  t.classList.add("pop"); setTimeout(() => { t.classList.remove("pop"); t.classList.add("done"); setTimeout(() => t.classList.remove("done"), 2500); }, 900);
+  if (ac && beatOn && j[3]) blip(440 * [1, 1.25, 1.5, 2][lane]);
+  setTimeout(() => {
+    const l = LOOKS[t.dataset.i], b = q(".lk-j", lb); q("img", lb).src = l.src; q("img", lb).alt = l.t;
+    q("figcaption", lb).innerHTML = `<em>${l.c}</em>${l.t}`; b.textContent = j[1]; b.style.color = j[2];
+    lb.classList.add("on"); clearTimeout(lbT); lbT = setTimeout(() => lb.classList.remove("on"), 1800);
+  }, 320);
+}
+st.addEventListener("click", e => { const t = e.target.closest(".lk-t"); if (!t || tmoved > 12) { tmoved = 0; return; } hit(t); });
+lb.addEventListener("click", () => lb.classList.remove("on"));
+addEventListener("keydown", e => {
+  if (!open) return;
+  if (e.key === "Escape") { e.preventDefault(); lb.classList.contains("on") ? lb.classList.remove("on") : hide(); return; }
+  if (e.target.closest && e.target.closest("button") && (e.key === "Enter" || e.key === " ")) return;
+  const lane = "dfjk".indexOf(e.key.toLowerCase()); if (lane < 0) return;
+  const pr = pads[lane].getBoundingClientRect(), py = (pr.top + pr.bottom) / 2; let best = null, bd = 1e9;
+  [...cols[lane].children].forEach(t => { if (t.classList.contains("off")) return; const r = t.getBoundingClientRect(), dd = Math.abs((r.top + r.bottom) / 2 - py); if (dd < bd) { bd = dd; best = t; } });
+  if (best) hit(best);
+});
+/* keep focus inside the dialog */
+ov.addEventListener("keydown", e => { if (e.key !== "Tab") return; const f = qa("button:not(.off)", q(".lk-bar", ov)).concat(q(".lk-beat", ov)); const i = f.indexOf(document.activeElement); if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); } else if (!e.shiftKey && i === f.length - 1) { e.preventDefault(); f[0].focus(); } });
+
+/* tiny synth beat: kick + hat, ~118 bpm */
+function kick() { const o = ac.createOscillator(), g = ac.createGain(), n = ac.currentTime; o.frequency.setValueAtTime(150, n); o.frequency.exponentialRampToValueAtTime(40, n + .15); g.gain.setValueAtTime(.9, n); g.gain.exponentialRampToValueAtTime(.001, n + .3); o.connect(g).connect(ac.destination); o.start(n); o.stop(n + .3); }
+function hat() { const b = ac.createBuffer(1, ac.sampleRate * .05, ac.sampleRate), d = b.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1; const s = ac.createBufferSource(), f = ac.createBiquadFilter(), g = ac.createGain(), n = ac.currentTime; s.buffer = b; f.type = "highpass"; f.frequency.value = 7000; g.gain.setValueAtTime(.25, n); g.gain.exponentialRampToValueAtTime(.001, n + .05); s.connect(f).connect(g).connect(ac.destination); s.start(n); }
+function blip(fq) { const o = ac.createOscillator(), g = ac.createGain(), n = ac.currentTime; o.type = "triangle"; o.frequency.value = fq; g.gain.setValueAtTime(.2, n); g.gain.exponentialRampToValueAtTime(.001, n + .25); o.connect(g).connect(ac.destination); o.start(n); o.stop(n + .25); }
+q(".lk-beat", ov).addEventListener("click", e => { ac = ac || new (window.AudioContext || window.webkitAudioContext)(); beatOn = !beatOn; e.currentTarget.setAttribute("aria-pressed", beatOn); if (beatOn) ac.resume(); });
 })();
 </script>
 </body></html>
