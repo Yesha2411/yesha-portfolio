@@ -325,7 +325,7 @@ a.take{min-width:0}@media (max-width:700px){.takes{grid-template-columns:1fr}.mo
 body{overflow-x:clip}
 .card .card-art img{filter:grayscale(1) contrast(1.05);transition:filter .5s var(--ease-out),transform var(--dur-slow) var(--ease-out)}.card:hover .card-art img,.card:focus-visible .card-art img,.card:active .card-art img{filter:none;transform:scale(1.02)}
 @media (prefers-reduced-motion:reduce){.card .card-art img{transition:none}}
-.card .card-art img.fit-contain{object-fit:contain;padding:8px;background:#0B0B0C}
+.card .card-art img.fit-contain{object-fit:contain;padding:8px;background:#0B0B0C}.card .card-art img.fit-poster{object-fit:contain;object-position:50% 50%;background:#EFE8E0}
 .tcv{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:14px;padding:16px;background:#0B0B0C;background-image:radial-gradient(circle,rgba(236,232,225,.07) 1px,transparent 1.4px);background-size:10px 10px}
 .tc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.tc-grid i{aspect-ratio:1.4;border-radius:6px;border:1px solid var(--line-2);background:rgba(236,232,225,.04);position:relative;transition:background .3s,border-color .3s}
 .tc-grid i:nth-child(3n){aspect-ratio:1.4;border-radius:999px}.tc-grid i.ok{border-color:rgba(168,200,160,.6);background:rgba(168,200,160,.14)}.tc-grid i.ok::after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;color:#A8C8A0;font-size:12px}
@@ -3021,7 +3021,7 @@ const PITCH = 12;
 
 /* ---------- data ---------- */
 const PROJECTS = [
-  {slug:"navigator", name:"Navigator", label:"Navigator", art:"bars", img:"cs/navigator-cover.webp", imgFit:"contain", kind:"Case study", page:true,
+  {slug:"navigator", name:"Navigator", label:"Navigator", art:"bars", img:"cs/navigator-cover.webp", imgFit:"poster", kind:"Case study", page:true,
    dec:"I turned test scores into a next step for every teacher.", con:"+25% teacher activation",
    ctx:"Benesse's exam-prep platform for students, teachers, mentors and ops. ~70% fewer ops tickets and calls during exam cycles.",
    fit:{d:["education","ai","systems"], s:"enterprise", o:["research","scale"]},
@@ -3030,7 +3030,7 @@ const PROJECTS = [
    p:"Teachers, students and ops teams had test data but no clear next step. Deep navigation buried what each role needed.",
    r:"Designed role-based dashboards, a chain from test results to teaching plans, and sign-in recovery on a design system extended from Ant Design.",
    o:"+25% teacher activation, ~70% fewer ops tickets and calls, and three follow-on products."},
-  {slug:"healthnexus", img:"cs/healthnexus-cover.webp", imgFit:"contain", name:"HealthNexus", label:"HealthNexus", art:"pulse", kind:"Case study", page:true,
+  {slug:"healthnexus", img:"cs/healthnexus-cover.webp", imgFit:"poster", name:"HealthNexus", label:"HealthNexus", art:"pulse", kind:"Case study", page:true,
    dec:"I fixed the system, not the screen.", con:"57/57 visual tests passing · One fix now reaches every screen",
    ctx:"Design lead on Next Health's live iOS app. The rule was no redesign.",
    fit:{d:["ai","health","systems"], s:"startup", o:["live","scale"]},
@@ -3039,7 +3039,7 @@ const PROJECTS = [
    p:"A live iOS health app had drifted. Each screen was built from its own copies, so every fix stayed on one screen.",
    r:"Audited the drift with AI-assisted checks, moved screens to token-bound library components, and added automated guardrails: token lint, visual regression and accessibility checks.",
    o:"Audit issues down to 0, 12 screen states rebuilt, 18 onboarding conflicts resolved into one flow, and 57/57 visual tests passing in Dark and Light."},
-  {slug:"nucleus", name:"Nucleus", label:"Nucleus", art:"steps", img:"cs/nucleus-cover.webp", imgFit:"contain", kind:"Case study", page:true,
+  {slug:"nucleus", name:"Nucleus", label:"Nucleus", art:"steps", img:"cs/nucleus-cover.webp", imgFit:"poster", kind:"Case study", page:true,
    dec:"I let the system do the routine work.", con:"Visit reports: 3–4 hrs → 10 min",
    ctx:"LEAD School's school-management ERP, used by 3,500 schools. Grouping tickets also dropped ~70%.",
    fit:{d:["education","ai","systems"], s:"mid", o:["live","research"]},
@@ -3048,7 +3048,7 @@ const PROJECTS = [
    p:"A school ERP pushed setup, grouping and reports onto people, so principals delegated and support was flooded.",
    r:"Redesigned onboarding as a prompting checklist, added AI-suggested literacy grouping, and built a mobile report builder.",
    o:"~70% fewer ops tickets on grouping across 3,500 schools, and visit reports in 10 minutes instead of 3–4 hours."},
-  {slug:"lucid-finance", name:"Lucid Finance", label:"Lucid Finance", art:"ledger", img:"cs/lucid-cover.webp", kind:"Case study", page:true,
+  {slug:"lucid-finance", name:"Lucid Finance", label:"Lucid Finance", art:"ledger", img:"cs/lucid-cover.webp", imgFit:"poster", kind:"Case study", page:true,
    dec:"I moved hard money questions to the moment they matter.", con:"~40% faster handoff · 200+ screens in light and dark",
    ctx:"Sole product designer on an AI personal finance app. Five separate tools became one system across 200+ screens and states.",
    fit:{d:["ai","fintech"], s:"startup", o:["zero","research"]},
