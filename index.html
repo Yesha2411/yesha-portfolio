@@ -1474,7 +1474,7 @@ dialog.case::backdrop{background:rgba(8,8,9,.7)}
 .rail-foot a.resume{color:var(--text-dim)}
 
 /* ---------- Life in looks lately (deck gallery) ---------- */
-.lk-mod .peek-t .lk-nw{display:inline;white-space:nowrap;color:inherit;font-size:inherit;font-weight:inherit}.lk-mod .peek-t .lk-new{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:999px;font:600 9px/1.5 var(--mono);letter-spacing:.06em;vertical-align:3px;color:#0E0E0F;background:var(--accent)}.module.lk-mod{padding:0;background:none;border:0;box-shadow:none}.lk-mod .chev{font-family:var(--mono);font-size:14px}
+.lk-mod .peek-t .lk-nw{display:inline;white-space:nowrap;color:inherit;font-size:inherit;font-weight:inherit}#lk-open{position:relative}#lk-open .lk-new{position:absolute;top:-8px;right:12px;margin:0;padding:1px 7px;border-radius:999px;font:600 9px/1.6 var(--mono);letter-spacing:.06em;box-shadow:0 0 0 3px var(--bg-1);color:#0E0E0F;background:var(--accent)}.module.lk-mod{padding:0;background:none;border:0;box-shadow:none}.lk-mod .chev{font-family:var(--mono);font-size:14px}
 .lk-mod .peek-t b .lk-new{display:inline-block;width:auto;font-size:10px;font-weight:600;color:#0E0E0F;margin-left:6px;padding:1px 5px;border-radius:4px;background:var(--accent);color:#0E0E0F;font:600 10px/1.4 var(--mono);vertical-align:2px}
 #lk{position:fixed;inset:0;z-index:10002;background:#0E0E0F;color:var(--text);font-family:var(--sans);overflow:hidden;visibility:hidden;clip-path:circle(0 at var(--ox,50%) var(--oy,50%));transition:clip-path .7s cubic-bezier(.7,0,.2,1),visibility 0s .7s}
 #lk.open{visibility:visible;clip-path:circle(150% at var(--ox) var(--oy));transition:clip-path .7s cubic-bezier(.7,0,.2,1)}
@@ -1582,7 +1582,7 @@ dialog.case::backdrop{background:rgba(8,8,9,.7)}
         </div>
       </section>
       <section class="module lk-mod" aria-label="Life in looks lately">
-        <button class="acc-toggle peek" id="lk-open" aria-haspopup="dialog" aria-controls="lk"><span class="peek-strip" id="lk-peek" aria-hidden="true"></span><span class="peek-t"><b>Life in looks <span class="lk-nw">lately<span class="lk-new">NEW</span></span></b><span>Imagination + exploration, in pictures.</span></span><span class="chev" aria-hidden="true">↗</span></button>
+        <button class="acc-toggle peek" id="lk-open" aria-haspopup="dialog" aria-controls="lk"><span class="lk-new" aria-label="New">NEW</span><span class="peek-strip" id="lk-peek" aria-hidden="true"></span><span class="peek-t"><b>Life in looks lately</b><span>Imagination + exploration, in pictures.</span></span><span class="chev" aria-hidden="true">↗</span></button>
       </section>
     </div>
 
