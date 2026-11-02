@@ -1158,10 +1158,10 @@ dialog.case.art .case-hero,dialog.case.art .case-sec{display:none}
 #lab{scroll-margin-top:24px;outline:none}
 .pg:focus{outline:none}
 .pg:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.lab-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px 24px;padding-top:28px;border-top:1px solid var(--line)}
+.lab-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px 24px;padding-top:28px;margin-bottom:24px;border-top:1px solid var(--line)}
 .lab-head h3{margin:0;font-size:22px;letter-spacing:-.01em}
 .lab-head p{margin:4px 0 0;color:var(--text-dim);font-size:14px}
-.lab-f{display:flex;flex-wrap:wrap;gap:8px}
+.lab-f{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:2px}
 .lf{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 14px;border:1px solid var(--line-2);border-radius:var(--r-chip);background:transparent;color:var(--text-dim);font-size:13.5px;transition:background var(--dur-fast),color var(--dur-fast),border-color var(--dur-fast)}
 .lf:hover{color:var(--text);border-color:var(--text-dim)}
 .lf .n{font-family:var(--mono);font-size:11px;opacity:.75}
@@ -1532,6 +1532,7 @@ dialog.case::backdrop{background:rgba(8,8,9,.7)}
 }
 @media (prefers-reduced-motion:reduce){#lk,#lk.open{transition:none}}
 @media (min-width:1200px){.lk-mod .peek-strip{width:64px;height:64px}}
+.case-hero img.fit-cover-img{object-fit:contain;object-position:50% 50%;background:#0B0B0C}
 </style>
 
 <a class="skip" href="#p-work">Skip to work</a>
@@ -3410,7 +3411,7 @@ function openCase(p, from, list = PROJECTS){
   $("#case-p").textContent = p.p; $("#case-r").textContent = p.r; $("#case-o").textContent = p.o;
   $("#case-next").textContent = list === PROJECTS ? "Next project →" : list === SHEETS ? "Next experiment →" : "Next evaluation →";
   const cv = $("#case-canvas"); cv.dataset.art = p.art;
-  const ci = $("#case-img"); ci.hidden = !p.img; cv.hidden = !!p.img; if (p.img){ ci.src = p.hero || p.img; ci.alt = p.alt; }
+  const ci = $("#case-img"); ci.hidden = !p.img; cv.hidden = !!p.img; if (p.img){ ci.src = p.img; ci.alt = p.alt; ci.classList.toggle("fit-cover-img", !!p.cat); }
   const cx = $("#case-extra"); cx.innerHTML = p.extra ? $("#" + p.extra).innerHTML : "";
   if (p.extra){ const ba = $(".ba", cx), r = $("input", ba); r.addEventListener("input", () => { ba.style.setProperty("--x", r.value + "%"); r.setAttribute("aria-valuetext", r.value + "% concept"); });
     const ex = $(".ex", cx), eb = $("#ex-btn", cx); eb.addEventListener("click", () => { const v = eb.getAttribute("aria-pressed") === "true" ? 0 : 1; ex.style.setProperty("--e", v); eb.setAttribute("aria-pressed", v ? "true" : "false"); eb.textContent = v ? "Put it back together" : "Take it apart"; }); }
