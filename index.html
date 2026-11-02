@@ -1533,8 +1533,8 @@ dialog.case::backdrop{background:rgba(8,8,9,.7)}
 @media (prefers-reduced-motion:reduce){#lk,#lk.open{transition:none}}
 @media (min-width:1200px){.lk-mod .peek-strip{width:64px;height:64px}}
 .case-hero img.fit-cover-img{object-fit:contain;object-position:50% 50%;background:#0B0B0C}
-.custom-cursor dialog,.custom-cursor dialog *{cursor:auto}.custom-cursor dialog :is(button,a,[role=tab],summary),.custom-cursor dialog :is(button,a,[role=tab]) *{cursor:pointer!important}.custom-cursor dialog [role=tab]:hover:not([aria-selected=true]){color:var(--text);background:rgba(236,232,225,.06)}
 .btn:focus-visible,#sheet-close:hover{border-color:var(--text)}
+.case-hero [hidden]{display:none!important}
 </style>
 
 <a class="skip" href="#p-work">Skip to work</a>
@@ -4764,5 +4764,10 @@ function hat() { const b = ac.createBuffer(1, ac.sampleRate * .05, ac.sampleRate
 function blip(fq) { const o = ac.createOscillator(), g = ac.createGain(), n = ac.currentTime; o.type = "triangle"; o.frequency.value = fq; g.gain.setValueAtTime(.2, n); g.gain.exponentialRampToValueAtTime(.001, n + .25); o.connect(g).connect(ac.destination); o.start(n); o.stop(n + .25); }
 q(".lk-beat", ov).addEventListener("click", e => { ac = ac || new (window.AudioContext || window.webkitAudioContext)(); beatOn = !beatOn; e.currentTarget.setAttribute("aria-pressed", beatOn); if (beatOn) ac.resume(); });
 })();
+
+/* keep the eye cursor above open dialogs (top layer) */
+(() => { const els = ["cur-ring","cur-dot","cur-eyes"].map(i => document.getElementById(i)).filter(Boolean); if (!els.length) return;
+  const sync = () => { const d = [...document.querySelectorAll("dialog[open]")].pop(); const host = d || document.body; els.forEach(e => { if (e.parentElement !== host) host.appendChild(e); }); };
+  new MutationObserver(sync).observe(document.body, { subtree: true, attributes: true, attributeFilter: ["open"] }); })();
 </script>
 </body></html>
