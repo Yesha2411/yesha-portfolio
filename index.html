@@ -319,7 +319,7 @@ a.take{min-width:0}@media (max-width:700px){.takes{grid-template-columns:1fr}.mo
 .acv .ac-chip{position:absolute;right:8px;top:8px;padding:2px 7px;border-radius:999px;font-size:7.5px;color:#0E0E0F;background:var(--accent-grad);opacity:0;transform:scale(.8);transition:opacity .35s,transform .45s cubic-bezier(.3,1.5,.5,1)}.acv .ac-chip.on{opacity:1;transform:none}
 @property --p{syntax:"<number>";inherits:false;initial-value:0}
 @media (prefers-reduced-motion:reduce){.acv .ac-ans,.acv .ac-chip,.acv .ac-ring,.acv .ac-steps i{transition:none}}
-#lab .pg.more{opacity:.4}#lab .pg.more:nth-child(n+7){opacity:.2}.lab-end{margin-top:32px;padding-top:32px}#lab .pg.more .pg-btn{visibility:hidden}.lab-end[hidden]{display:none}.circle a[aria-disabled="true"]{cursor:default}
+#lab .pg.more{opacity:.4}#lab .pg.more:nth-child(n+7){opacity:.2}.lab-end{margin-top:32px;padding-top:32px}#lab .pg.more .pg-btn{cursor:default}.lab-end[hidden]{display:none}.circle a[aria-disabled="true"]{cursor:default}
 .circle a.soon{position:relative;cursor:default}.circle a.soon b{opacity:.45}
 .soon-tag{position:absolute;top:36px;left:50%;transform:translateX(-50%) rotate(-7deg);z-index:1;display:inline-flex;align-items:center;gap:4px;white-space:nowrap;padding:3px 8px;border-radius:4px;border:1.5px dashed #E85D9A;background:rgba(14,14,15,.9);font-size:8px;line-height:12px;letter-spacing:.16em;color:#9FC4C9;text-shadow:1px .5px 0 rgba(232,93,154,.85);box-shadow:1.5px 1px 0 rgba(159,196,201,.5)}.circle a.soon{padding-bottom:0}.soon-tag svg{width:10px;height:10px}
 body{overflow-x:clip}
@@ -3384,7 +3384,7 @@ $("#lab-f").innerHTML = LAB_CATS.map(([k, l]) => {
 }).join("");
 function filterLab(cat){
   $$("#lab-f .lf").forEach(b => b.setAttribute("aria-pressed", b.dataset.cat === cat ? "true" : "false"));
-  $$("#lab .pg").forEach((c, i) => { c.hidden = cat !== "all" && c.dataset.tag !== cat; c.classList.remove("more"); c.inert = false; });
+  $$("#lab .pg").forEach((c, i) => { c.hidden = cat !== "all" && c.dataset.tag !== cat; const more = cat === "all" && i >= 4; c.classList.toggle("more", more); c.inert = more; });
   $("#lab-end").hidden = cat !== "all";
   const n = $$("#lab .pg").filter(c => !c.hidden).length;
   $("#lab-live").textContent = `Showing ${n} ${n === 1 ? "experiment" : "experiments"}`;
