@@ -27,7 +27,7 @@
 const CONFIG = {
   /* PostHog project API key (starts with "phc_"). It is public by design:
      it can only send events, never read them. Empty = analytics stay off. */
-  key: "",
+  key: "phc_C2fH7LKqmsPUh4wfaYkxdCfPcaFfxfKNPXi9m584vFVb",
   api_host: "https://us.i.posthog.com",
   ui_host: "https://us.posthog.com",
 };
