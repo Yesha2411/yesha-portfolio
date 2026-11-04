@@ -52,6 +52,12 @@ const optedOut = () => lsGet(OPT_KEY) === "1";
 const allowed = () => !GPC && !DNT && !optedOut();
 let TZ = ""; try { TZ = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (_) {}
 const IN_EUROPE = /^Europe\//.test(TZ) || /^Atlantic\/(Reykjavik|Canary|Madeira|Azores|Faroe)$/.test(TZ);
+/* Owner switch: open any page once with ?yt_me=1 to tag this browser's events
+   as internal (is_internal: true), so PostHog's "Filter out internal and test
+   users" hides them. ?yt_me=0 removes the tag. */
+const meParam = (location.search.match(/[?&]yt_me=([01])\b/) || [])[1];
+if (meParam === "1") lsSet("yt-me", "1"); else if (meParam === "0") lsDel("yt-me");
+const IS_ME = lsGet("yt-me") === "1";
 
 /* ---------- state for this visit ---------- */
 const S = {
@@ -78,6 +84,7 @@ function context(){
     engaged_seconds_on_site: Math.round(S.engagedTotal),
     visitor_type: visit.visitor_type,
     visit_number_bucket: visit.visit_number_bucket,
+    is_internal: IS_ME || undefined,
   };
   return c;
 }
@@ -137,7 +144,7 @@ function loadPostHog(){
       ["$current_url", "$referrer", "$initial_referrer"].forEach(k => { if (typeof p[k] === "string") p[k] = scrubUrl(p[k]); });
       return ev;
     },
-    loaded: inst => { ph = inst; while (queue.length){ const [n, p, o] = queue.shift(); inst.capture(n, p, o); } },
+    loaded: inst => { ph = inst; if (IS_ME) inst.register({ is_internal: true }); while (queue.length){ const [n, p, o] = queue.shift(); inst.capture(n, p, o); } },
   });
 }
 function scrubUrl(u){

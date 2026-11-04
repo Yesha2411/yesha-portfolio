@@ -46,9 +46,13 @@ Privacy-first product analytics on **PostHog Cloud's free plan**. Everything run
      - Dead clicks **ON**
      - Heatmap capture URLs: `https://www.yesha.online/*` (one wildcard covers every tab and case study, because each has its own `#hash`)
    - Settings → Project → *Session replay*: leave **OFF** (the code forces it off anyway).
-   - Settings → Project → *Filter out internal and test users*: add `$host` = `localhost`.
+   - Settings → Project → *Filter out internal and test users*: add `is_internal` **is not set**, `$host` **doesn't contain** `vercel.app`, and `$host` **doesn't contain** `localhost`.
 4. **Deploy** (merge to `main`; Vercel publishes it).
-5. **Exclude yourself.** On your own browsers, open Privacy in the footer and click **Turn off analytics**.
+5. **Mark yourself.** On each of your own browsers and phones, open `https://www.yesha.online/?yt_me=1` once.
+   - From then on, every event from that browser carries `is_internal: true` and is hidden whenever "Filter out internal and test users" is on.
+   - Turn the filter off to see your own test clicks.
+   - `?yt_me=0` removes the tag.
+   - To stop collecting your visits entirely, use **Turn off analytics** in the Privacy panel instead.
 6. **Build the dashboard.** Create a personal API key in Settings → User → Personal API keys, with scopes `action:write`, `dashboard:write`, `insight:write`, `project:read`. Then run:
    ```
    POSTHOG_API_KEY=phx_... POSTHOG_PROJECT_ID=<number in your PostHog URL> node analytics-setup/posthog-setup.mjs
