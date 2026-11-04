@@ -1535,6 +1535,8 @@ dialog.case::backdrop{background:rgba(8,8,9,.7)}
 .case-hero img.fit-cover-img{object-fit:contain;object-position:50% 50%;background:#0B0B0C}
 .btn:focus-visible,#sheet-close:hover{border-color:var(--text)}
 .case-hero [hidden]{display:none!important}
+.pg h3{min-height:calc(2 * 1.2em);line-height:1.2;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pg .kick{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}.pg .pg-btn{margin-top:auto!important}.pg h3{margin-bottom:14px!important}
 </style>
 
 <a class="skip" href="#p-work">Skip to work</a>
@@ -3134,13 +3136,13 @@ const PLAY = [
    p:"Philips wanted a compelling first use for mixed reality in a new market. Ultrasound stood out: finding the right scan plane takes training, and the result depends on it.",
    r:"Expert interviews, workshops with service engineers and bodystorming shaped an experience workflow. We built a DIY ultrasound phantom to test on, then two HoloLens iterations: the first visualized scan data, the second guided trainees with audio cues instead of text. A tablet version with image-recognition AR showed where markers limit real-size models.",
    o:"Audio cues, not text, became the way to direct a trainee's attention. Clinical procedure time dropped 35%, the MVP secured funding, and it was named Most Innovative Project of the Year."},
-  {slug:"pg-akshyn", tag:"ai", cat:"ai", era:"now", name:"AI-kshyn", kick:"AI & Accessibility · R&D", art:"fan", img:"pg/akshyn.webp", hero:"pg/akshyn-wide.webp", alt:"AI-kshyn app on a phone showing a daily Eye Pulse Score of 76 in the caution zone with AI recommendations",
+  {slug:"pg-akshyn", tag:"ai", cat:"ai", era:"now", name:"Vision AI companion app", kick:"AI & Accessibility · R&D", art:"fan", img:"pg/akshyn.webp", hero:"pg/akshyn-wide.webp", alt:"AI-kshyn app on a phone showing a daily Eye Pulse Score of 76 in the caution zone with AI recommendations",
    kind:"R&D concept · 2025", role:"Research, design and product concept · Solo", line:"A daily eye check should be as normal as brushing your teeth.",
    tags:["AI","Accessibility","Health"], tools:["Figma"], size:"Solo", secs:PG_SECS,
    p:"2.2 billion people live with vision impairment, and about half of it is preventable. But checks are expensive, people forget until it's too late, and most health apps aren't built for older or non-English-speaking users.",
    r:"A survey and interviews showed the gap: 8 in 10 felt digital eye fatigue, 80% wanted to track their vision weekly, 60% weren't sure of their prescription, and every participant was open to AI guidance. AI-kshyn turns that into a daily habit: an Eye Pulse Score, mini games that build eye-health habits, weekly trends and nudges, and an AI assistant. It's accessible by default, with voice narration, multiple languages, large and dyslexia-friendly type, and a hands-free mode for AR glasses and watches.",
    o:"Accessibility isn't a feature you add later. Designing for older and non-English-speaking users first made the whole product simpler for everyone."},
-  {slug:"pg-aicademia", tag:"ai", anim:"aicademia", cat:"ai", era:"now", name:"AIcademia", kick:"Product concept · AI-ready", art:"steps",
+  {slug:"pg-aicademia", tag:"ai", anim:"aicademia", cat:"ai", era:"now", name:"AI degree planner", kick:"Product concept · AI-ready", art:"steps",
    kind:"Product concept · 2025", role:"Research, design and front-end build", line:"A decision-support layer for universities. Same thinking as Navigator, from K–12 to higher ed.",
    tags:["EdTech","Decision support","AI-ready","Multi-role systems"], tools:["Figma","Replit","React"], size:"Concept, built as working flows", secs:["The opportunity","The product","Where AI comes in"],
    p:"Universities run on disconnected portals, PDF forms and advisor inboxes. The data exists, but no one can act on it. Students guess where they stand, advisors repeat the same answers every term, and admin teams check documents by hand. It's the same gap I saw in K–12 with Navigator: the answers are there, but nobody can use them.",
