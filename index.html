@@ -1828,13 +1828,13 @@ dialog.case::backdrop{background:rgba(8,8,9,.7)}
 <p class="mono sf-m">Curious how I'd make yours calmer?</p>
 <div class="row"><a class="sf-l a" href="mailto:niranjan.yesha@gmail.com?subject=Let%27s%20talk">Write to me →</a><a class="sf-l" href="mailto:niranjan.yesha@gmail.com?subject=UX%20evaluation%20request">Request a UX evaluation →</a></div>
 <nav class="links" aria-label="Footer"><a href="mailto:niranjan.yesha@gmail.com">niranjan.yesha@gmail.com</a><a href="https://www.linkedin.com/in/yesha-niranjan/" target="_blank" rel="noopener">LinkedIn</a><a href="https://medium.com/@yeshaniranjan" target="_blank" rel="noopener">Medium</a><a href="https://www.instagram.com/maydsense/" target="_blank" rel="noopener">Instagram</a><a href="https://open.spotify.com/show/5GcTCokzg4oymAcM0D00g4" target="_blank" rel="noopener">Podcast</a><a href="Yesha-Niranjan-Resume.pdf" target="_blank" rel="noopener">Resume</a></nav>
-<div class="base"><span class="mono sf-m">© 2026 Yesha Niranjan · Bay Area</span><span class="mono sf-m"><button class="linkbtn" id="priv-btn" style="color:inherit;font:inherit;letter-spacing:inherit">Privacy</button> · No tracking · Made with care + AI</span></div>
+<div class="base"><span class="mono sf-m">© 2026 Yesha Niranjan · Bay Area</span><span class="mono sf-m"><button class="linkbtn" id="priv-btn" style="color:inherit;font:inherit;letter-spacing:inherit">Privacy</button> · No cookies · Made with care + AI</span></div>
 </div>
 </footer>
 <dialog class="priv inv" id="inv" aria-labelledby="inv-h"><h2 id="inv-h">Invite me to your event</h2><p>I'll reply within a couple of days.</p>
 <form id="inv-f" class="inv-f"><label>Event name<input name="ev" required placeholder="SF Design Night"></label><label>Date<input name="dt" type="date" required></label><label>Where<input name="wh" placeholder="City or link"></label><label>A line about it<textarea name="nt" rows="3" placeholder="Talk, panel, meetup, coffee…"></textarea></label><label>Your name<input name="nm" required></label>
 <div class="inv-a"><button class="btn btn-accent" type="submit">Draft my email →</button><button class="btn" type="button" id="inv-x">Cancel</button></div></form></dialog>
-<dialog class="priv" id="priv" aria-labelledby="priv-h"><h2 id="priv-h">Privacy</h2><p>No analytics, no cookies, no tracking. Your Mode choices (music, motion, focus, font) are saved only in your own browser. The music file loads from this site only when it plays. Emails go straight to my inbox.</p><button class="btn" id="priv-x">Close ✕</button></dialog>
+<dialog class="priv" id="priv" aria-labelledby="priv-h"><h2 id="priv-h">Privacy</h2><p>No cookies, no ads, no session recordings. I use anonymous analytics (PostHog) to learn which work people read and which buttons they use, so I can make this site better. Nothing identifies you: your IP address gives a rough country and city, then it's discarded. Ask Yes-ha keeps only the topic of a question, never what you type. Outside Europe, one small visit counter with no ID stays in your browser, so I can tell first visits from return ones.</p><p>If your browser sends Do Not Track or Global Privacy Control, nothing is collected. Your Mode choices (music, motion, focus, font) are saved only in your own browser. The music file loads from this site only when it plays. Emails go straight to my inbox.</p><p class="mono" id="priv-state" aria-live="polite"></p><div class="inv-a"><button class="btn" id="priv-opt" type="button">Turn off analytics</button><button class="btn" id="priv-x">Close ✕</button></div></dialog>
   </main>
 </div>
 
@@ -4773,4 +4773,5 @@ q(".lk-beat", ov).addEventListener("click", e => { ac = ac || new (window.AudioC
   const sync = () => { const d = [...document.querySelectorAll("dialog[open]")].pop(); const host = d || document.body; els.forEach(e => { if (e.parentElement !== host) host.appendChild(e); }); };
   new MutationObserver(sync).observe(document.body, { subtree: true, attributes: true, attributeFilter: ["open"] }); })();
 </script>
+<script src="analytics.js" defer></script>
 </body></html>
